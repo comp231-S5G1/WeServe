@@ -4,7 +4,7 @@ var passport = require("passport");
 var Vendor = require("../models/vendor");
 var middleware = require("../middleware");
 
-//ROUTE FOR THE HANDYMAN LANDING PAGE
+//ROUTE FOR THE WESERVE LANDING PAGE
 router.get("/", function (req, res) {
 	res.render("landing");
 });

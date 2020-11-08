@@ -43,7 +43,7 @@ router.post("/vendor/login", passport.authenticate("vendor",
     successRedirect: "/services",
     failureRedirect: "/vendor/login",
     failureFlash: "Incorrect username or Password",
-    successFlash: "Welcome to Handyman!"
+    successFlash: "Welcome to We Serve!"
   }), function (req, res) {
   });
 
@@ -58,7 +58,7 @@ router.post("/vendor/login", passport.authenticate("vendor",
 //       return res.redirect("/vendor/login");
 //     }
 //     if(!vendor.isApproved){
-//       req.flash("error", "Your request is not approved! Please wait for Approval. Our Handyman team will contact you soon.");
+//       req.flash("error", "Your request is not approved! Please wait for Approval. Our We Serve team will contact you soon.");
 //       return res.redirect("/vendor/login");
 //     }
 //     req.logIn(vendor, function (err) {
@@ -268,7 +268,7 @@ router.post("/vendor/forgot", function (req, res, next) {
       var mailOptions = {
         to: user.email,
         from: "YOUR_EMAIL_ID",
-        subject: "Handyman Password Reset",
+        subject: "Password Reset",
         text: "You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n" +
           "Please click on the following link, or paste this into your browser to complete the process:\n\n" +
           "http://" + req.headers.host + "/vendor/reset/" + token + "\n\n" +
@@ -333,7 +333,7 @@ router.post("/vendor/reset/:token", function (req, res) {
       var mailOptions = {
         to: user.email,
         from: "YOUR_EMAIL_ID",
-        subject: "Handyman: Your password has been changed",
+        subject: "Your password has been changed",
         text: "Hello,\n\n" +
           "This is a confirmation that the password for your account " + user.email + " has just been changed.\n"
       };
@@ -372,7 +372,7 @@ router.get("/:service/:subservice/:id", middleware.isLoggedIn, function (req, re
           req.flash("error", "Not Allowed!");
           res.redirect("/services");
         } else {
-          res.render("vendor/v_show", { vendor: foundVendor, error: "Your profile is not verified yet and will not be visible to others. Handyman team will contact you soon for verification." });
+          res.render("vendor/v_show", { vendor: foundVendor, error: "Your profile is not verified yet and will not be visible to others. We Serve team will contact you soon for verification." });
         }
       }
     } else {
