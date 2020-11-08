@@ -29,44 +29,7 @@
 		</div>
 	</section>
 
-	<% var teamArr = [
-			{
-				image: "team-member-1a.jpg",
-				name: "Dhrumil Shah",
-				<!-- role: "Lead Developer" -->
-			},
-			{
-				image: "team-member-2.jpg",
-				name: "Kavin Shah",
-				<!-- role: "Marketer" -->
-			},
-			{
-				image: "team-member-3.jpg",
-				name: "Rahil Shah",
-				<!-- role: "Senior Developer" -->
-			},
-			{
-				image: "team-member-4.jpg",
-				name: "Tatsat Tendulkar",
-				<!-- role: "Content Writer" -->
-			},
-		];
-		%>
-	<section class="team-container">
-		<h1>Team</h1>
-		<div class="row">
-			<% for(var i = 0 ; i < teamArr.length ; i++){ %>
-			<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-				<div class="team-member">
-					<img src="./assets/images/WeServe_team/<%= teamArr[i].image %>" alt="Dhrumil Shah">
-					<h3><%= teamArr[i].name %></h3>
-					<p>Co-Founder</p>
-					<!-- <p><%= teamArr[i].role %></p> -->
-				</div>
-			</div>
-			<% }; %>
-		</div>
-	</section>
+	
 
 	<section class="jumbotron try-us-container">
 		<div class="container">
