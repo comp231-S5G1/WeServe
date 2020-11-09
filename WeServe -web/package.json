@@ -1,13 +1,13 @@
 {
-  "name": "handyman-web",
+  "name": "WeServe-web",
   "version": "1.0.0",
-  "description": "Handyman Web Application",
+  "description": "WeServe Web Application",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Dhrumil Amish Shah",
+  "author": "Bhargav Marsonia",
   "license": "ISC",
   "dependencies": {
     "async": "^2.6.1",
