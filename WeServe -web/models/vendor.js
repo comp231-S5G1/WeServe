@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 var passportLocalMongooseVendor = require("passport-local-mongoose");
-
+// Awaiting Pull
 var VendorSchema = new mongoose.Schema({
 	isApproved: {
 		type: Boolean,
