@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 var passportLocalMongooseCustomer = require("passport-local-mongoose");
-
+//This page is old! it needs to be updated please
 var CustomerSchema = new mongoose.Schema({
 
     isCustomer: {
@@ -47,3 +47,4 @@ var CustomerSchema = new mongoose.Schema({
 
 CustomerSchema.plugin(passportLocalMongooseCustomer);
 module.exports = mongoose.model("Customer", CustomerSchema);
+
