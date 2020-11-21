@@ -1,3 +1,4 @@
+//This code is used in creating a new customer in the database
 var mongoose = require("mongoose");
 var passportLocalMongooseCustomer = require("passport-local-mongoose");
 // adding a comment to see push demos and more
