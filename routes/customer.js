@@ -63,7 +63,7 @@ router.put("/customer/:id", middleware.isLoggedIn, function (req, res) {
     }
 });
 
-//ROUTE FOR THE CUSTOMER DELETE
+//ROUTE FOR THE DELETING CUSTOMER 
 router.delete("/customer/:id", middleware.isLoggedIn, function (req, res) {
     Customer.findById(req.params.id, function (err, foundCustomer) {
         if (err) {
