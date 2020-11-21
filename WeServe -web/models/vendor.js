@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 var passportLocalMongooseVendor = require("passport-local-mongoose");
-
+//This is model for a vendor
 var VendorSchema = new mongoose.Schema({
 	isApproved: {
 		type: Boolean,
