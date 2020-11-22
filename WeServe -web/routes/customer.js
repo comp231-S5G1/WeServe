@@ -81,35 +81,35 @@ router.get("/customer/:id/edit", middleware.isLoggedIn, function (req, res) {
 //ROUTE FOR THE CUSTOMER UPDATE PAGE
 router.put("/customer/:id", middleware.isLoggedIn, function (req, res) {
 
-   var fname = req.body.fname;
-   var lname = req.body.lname;
-   var email = req.body.email;
+    var fname = req.body.fname;
+    var lname = req.body.lname;
+    var email = req.body.email;
 
-   req.checkBody("fname", "First Name can only have letters").isAlpha();
-   req.checkBody("lname", "Last Name can only have letters").isAlpha();
-   req.checkBody("email", "Email is not valid").isEmail();
+    req.checkBody("fname", "First Name can only have letters").isAlpha();
+    req.checkBody("lname", "Last Name can only have letters").isAlpha();
+    req.checkBody("email", "Email is not valid").isEmail();
 
-   var errors = req.validationErrors();
-   if (errors) {
-      res.render("customer/c_edit", {
-         error: errors[0].msg
-      });
-   } else {
-      var customer = {
-         fname: fname,
-         lname: lname,
-         email: email
-      };
-      Customer.findByIdAndUpdate(req.params.id, customer, function (err, updatedCustomer) {
-         if (err) {
-            req.flash("error", err.msg);
-            res.redirect("/customer/" + req.params.id + "/edit");
-         } else {
-            req.flash("success", "Successfully updated details for " + updatedCustomer.username);
-            res.redirect("/services");
-         }
-      });
-   }
+    var errors = req.validationErrors();
+    if (errors) {
+        res.render("customer/c_edit", {
+            error: errors[0].msg
+        });
+    } else {
+        var customer = {
+            fname: fname,
+            lname: lname,
+            email: email
+        };
+        Customer.findByIdAndUpdate(req.params.id, customer, function (err, updatedCustomer) {
+            if (err) {
+                req.flash("error", err.msg);
+                res.redirect("/customer/" + req.params.id + "/edit");
+            } else {
+                req.flash("success", "Successfully updated details for " + updatedCustomer.username);
+                res.redirect("/services");
+            }
+        });
+    }
 });
 
 //ROUTE FOR THE CUSTOMER FORGET PASSWORD PAGE
@@ -169,6 +169,16 @@ router.post("/customer/forgot", function (req, res, next) {
    });
 });
 
+//ROUTE FOR THE CUSTOMER RESET PASSWORD PAGE
+router.get("/customer/reset/:token", function (req, res) {
+    Customer.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function (err, user) {
+        if (!user) {
+            req.flash("error", "Password reset token is invalid or has expired.");
+            return res.redirect("/customer/forgot");
+        }
+        res.render("customer/c_resetpassword", { token: req.params.token });
+    });
+});
 
 
 //ROUTE FOR THE CUSTOMER RESET PASSWORD
