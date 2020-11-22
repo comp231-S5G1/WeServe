@@ -169,16 +169,7 @@ router.post("/customer/forgot", function (req, res, next) {
    });
 });
 
-//ROUTE FOR THE CUSTOMER RESET PASSWORD PAGE
-router.get("/customer/reset/:token", function (req, res) {
-   Customer.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function (err, user) {
-      if (!user) {
-         req.flash("error", "Password reset token is invalid or has expired.");
-         return res.redirect("/customer/forgot");
-      }
-      res.render("customer/c_resetpassword", { token: req.params.token });
-   });
-});
+
 
 //ROUTE FOR THE CUSTOMER RESET PASSWORD
 router.post("/customer/reset/:token", function (req, res) {
