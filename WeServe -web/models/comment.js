@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-// added comment
+// added comment 
 var CommentSchema = new mongoose.Schema({
 
 	text: {
