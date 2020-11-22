@@ -32,20 +32,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
-//ROUTE FOR THE VENDOR LOGIN PAGE
-router.get("/vendor/login", function (req, res) {
-  res.render("vendor/v_login");
-});
 
-// ROUTE FOR THE VENDOR LOGIN
-router.post("/vendor/login", passport.authenticate("vendor",
-  {
-    successRedirect: "/services",
-    failureRedirect: "/vendor/login",
-    failureFlash: "Incorrect username or Password",
-    successFlash: "Welcome to We Serve!"
-  }), function (req, res) {
-  });
 
 // router.post("/vendor/login", function (req, res, next) {
 //   passport.authenticate("vendor", function (err, vendor, info) {
