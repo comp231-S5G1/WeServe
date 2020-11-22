@@ -14,15 +14,6 @@ router.get("/admin/login", function (req, res) {
    res.render("admin/a_login");
 });
 
-//ROUTE FOR ADMIN LOGIN
-router.post("/admin/login", passport.authenticate("admin", {
-   successRedirect: "/services",
-   failureRedirect: "/admin/login",
-   failureFlash: "Incorrect username or Password",
-   successFlash: "Welcome to WeServe!"
-}), function (req, res) {
-});
-
 //ROUTE FOR THE ADMIN REGISTERATION PAGE
  router.get("/admin/register", function (req, res) {
    res.render("admin/a_register");
