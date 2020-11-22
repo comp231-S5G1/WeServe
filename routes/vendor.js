@@ -126,7 +126,7 @@ router.delete("/vendor/:id", middleware.isLoggedIn, function (req, res) {
   });
 });
 
-//ROUTE TO SEE ALL THE VENDORS WHO ARE NOT APPROVED
+//ROUTE TO MANAGE ALL THE VENDORS WHO ARE NOT APPROVED
 router.get("/vendor/vendor_approve_request", middleware.isLoggedIn, function (req, res) {
   Vendor.find({ isApproved: false }, function (err, foundVendors) {
     if (err) {
@@ -138,7 +138,7 @@ router.get("/vendor/vendor_approve_request", middleware.isLoggedIn, function (re
   });
 });
 
-//ROUTE TO APPROVE THE VENDOR
+//ROUTE TO MANAGE AND APPROVE THE VENDOR
 router.put("/vendor/:id/approve", middleware.isLoggedIn, function (req, res) {
   Vendor.findByIdAndUpdate(req.params.id, { isApproved: true }, function (err, updatedVendor) {
     if (err) {
