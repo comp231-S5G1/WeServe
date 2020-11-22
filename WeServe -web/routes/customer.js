@@ -78,6 +78,39 @@ router.get("/customer/:id/edit", middleware.isLoggedIn, function (req, res) {
    res.render("customer/c_edit");
 });
 
+//ROUTE FOR THE CUSTOMER UPDATE PAGE
+router.put("/customer/:id", middleware.isLoggedIn, function (req, res) {
+
+    var fname = req.body.fname;
+    var lname = req.body.lname;
+    var email = req.body.email;
+
+    req.checkBody("fname", "First Name can only have letters").isAlpha();
+    req.checkBody("lname", "Last Name can only have letters").isAlpha();
+    req.checkBody("email", "Email is not valid").isEmail();
+
+    var errors = req.validationErrors();
+    if (errors) {
+        res.render("customer/c_edit", {
+            error: errors[0].msg
+        });
+    } else {
+        var customer = {
+            fname: fname,
+            lname: lname,
+            email: email
+        };
+        Customer.findByIdAndUpdate(req.params.id, customer, function (err, updatedCustomer) {
+            if (err) {
+                req.flash("error", err.msg);
+                res.redirect("/customer/" + req.params.id + "/edit");
+            } else {
+                req.flash("success", "Successfully updated details for " + updatedCustomer.username);
+                res.redirect("/services");
+            }
+        });
+    }
+});
 
 //ROUTE FOR THE CUSTOMER FORGET PASSWORD PAGE
 router.get("/customer/forgot", function (req, res) {
