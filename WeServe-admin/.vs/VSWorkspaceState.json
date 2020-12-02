@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\routes",
+    "\\views",
+    "\\views\\admin",
+    "\\views\\customer",
+    "\\views\\partials",
+    "\\views\\subservices",
+    "\\views\\vendor"
+  ],
+  "SelectedNode": "\\views\\admin\\a_resetpassword.ejs",
+  "PreviewInSolutionExplorer": false
+}
