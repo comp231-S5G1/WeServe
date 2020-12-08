@@ -22,7 +22,7 @@ var imageFilter = function (req, file, cb) {
 var upload = multer({ storage: storage, fileFilter: imageFilter })
 var cloudinary = require("cloudinary");
 cloudinary.config({
-  cloud_name: "dhrumilshah98",
+  cloud_name: "dpe82toql",
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET
 });
@@ -60,7 +60,7 @@ router.put("/vendor/:id", middleware.isLoggedIn, upload.single("image"), functio
   req.checkBody("area", "Area is not valid").isAlpha();
   req.checkBody("city", "City is not valid").isAlpha();
   req.checkBody("state", "State is not valid").isAlpha();
-  req.checkBody("pincode", "Pincode is not valid").isNumeric({ no_symbols: true });
+  req.checkBody("pincode", "Pincode is not valid").isAlphanumeric();
   req.checkBody("mobile", "Mobile number can only have numbers").isNumeric({ no_symbols: true });
   req.checkBody("mobile", "Mobile number is not valid").matches("^[6-9][0-9]{9}$");
 

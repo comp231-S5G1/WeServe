@@ -47,29 +47,6 @@ router.post("/vendor/login", passport.authenticate("vendor",
   }), function (req, res) {
   });
 
-// router.post("/vendor/login", function (req, res, next) {
-//   passport.authenticate("vendor", function (err, vendor, info) {
-//     if (err) {
-//       req.flash("error", err.message);
-//       return res.redirect("/vendor/login");
-//     }
-//     if (!vendor) {
-//       req.flash("error", "Incorrect username or Password");
-//       return res.redirect("/vendor/login");
-//     }
-//     if(!vendor.isApproved){
-//       req.flash("error", "Your request is not approved! Please wait for Approval. Our We Serve team will contact you soon.");
-//       return res.redirect("/vendor/login");
-//     }
-//     req.logIn(vendor, function (err) {
-//       if (err) {
-//         req.flash("error", err.message);
-//         return res.redirect("/vendor/login");
-//       }
-//       return res.redirect("/services");
-//     });
-//   })(req, res, next);
-// });
 //ROUTE FOR THE VENDOR REGISTERATION PAGE
 router.get("/vendor/register", function (req, res) {
   res.render("vendor/v_register");
